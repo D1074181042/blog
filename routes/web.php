@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Pokemons;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+Route::get('/', function () {return view('welcome');});
+
+
+Route::get('pokemons', [Pokemons::class,'index']);
+
+
+//Route::get('pokemons', function (){return view('pokemons.index');});
+
+
+Route::get('pokemons/create', [Pokemons::class,'create']);
+
+
+Route::get('pokemons/{id}', [Pokemons::class,'show'])->where('id','[0-9]+');
+
+
+Route::get('pokemons/{id}/edit', [Pokemons::class,'edit'])->where('id','[0-9]+');
